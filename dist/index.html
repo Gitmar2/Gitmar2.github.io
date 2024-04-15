@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+
+    <!--TailwindCSS Link-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--CSS-->
+    <style>
+      #keys{
+        font-size: 2rem;
+        font-weight: bold;
+        gap: 2rem;
+        background-color: #09090b;
+      }
+      .operator-btn{
+        background-color: orange;
+        border-radius: 20px;
+        height: 3rem;
+        width: 4rem;
+      }
+      .operator-btn:hover{
+        background-color: red;
+      }
+      .operator-btn:active{
+        background-color: #f0f9ff;
+      }
+      button:hover{
+        background-color: #4b5563;
+        border-radius: 2rem;
+      }
+      button:active{
+        background-color: #f0f9ff;
+        border-radius: 2rem;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-700">
+     <!--ParentC-->
+    <div class="ParentC flex flex-col items-center justify-center mt-5">
+      <!--TextOnly-->
+      <h1 class="text-3xl mt-7 text-yellow-500 font-semibold mb-3">CALCULATOR</h1>
+     <!--ChildC-->
+      <div class="childC bg-black px-9 py-9 rounded-md">
+      <div class="calculator flex items-center justify-center mt-3">
+        <!--Input-->
+        <input class="inputext rounded-md text-3xl pr-8 py-2" type="text" readonly/>
+
+      </div>
+      <!--keys-->
+      <div id="keys" class="grid grid-cols-4 mt-2 text-slate-50 rounded-md w-96 px-2 py-8">
+        <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="clearDisplay()" class="operator-btn">C</button>
+      </div>
+     </div>
+    </div>
+    <script>
+      //Function for appending values to display
+      const display = document.querySelector(".inputext");
+      const appendToDisplay = (value) => {
+        display.value += value;
+      };
+      //Function to Clear the display
+      function clearDisplay() {
+      var display = document.querySelector('.inputext');
+      display.value = '';
+      }
+      //Function to Calculate the display value
+      function calculate(){
+        try {
+        display.value = eval(display.value);
+       } catch (error) {
+        display.value = "Error";
+        alert('Please enter a valid number');
+      }
+      }
+    </script>
+  </body>
+</html>
